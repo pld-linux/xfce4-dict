@@ -8,7 +8,10 @@ Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	c371c5c0bbe45a2bfac336cfe01dfe01
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
+BuildRequires:	gettext-devel
+BuildRequires:	intltool
 BuildRequires:	libxfcegui4-devel >= 4.6.0
+BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xfce4-dev-tools >= 4.6.0
 BuildRequires:	xfce4-panel-devel >= 4.6.0
@@ -18,10 +21,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This program allows you to search different kinds of dictionary
-services for words or phrases and shows you the result.
-Currently you can query a Dict server(RFC 2229), any online
-dictionary service by opening a web browser or search for words
-using the aspell/ispell program.
+services for words or phrases and shows you the result. Currently you
+can query a Dict server(RFC 2229), any online dictionary service by
+opening a web browser or search for words using the aspell/ispell
+program.
 
 %description -l pl.UTF-8
 Ten program pozwala przeszukiwać różne serwisy słownikowe w celu
