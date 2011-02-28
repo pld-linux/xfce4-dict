@@ -2,15 +2,19 @@ Summary:	Xfce4 Dictionary
 Summary(pl.UTF-8):	Słownik dla Xfce4
 Name:		xfce4-dict
 Version:	0.6.0
-Release:	3
+Release:	4
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	c371c5c0bbe45a2bfac336cfe01dfe01
+Patch0:		%{name}-ui.patch
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
-BuildRequires:	libxfcegui4-devel >= 4.6.0
+BuildRequires:	libtool
+BuildRequires:	libxfce4ui-devel >= 4.8.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	xfce4-dev-tools >= 4.6.0
@@ -47,9 +51,16 @@ Wtyczka dla panelu Xfce dla xfce4-dict.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure
+
 %{__make}
 
 %install

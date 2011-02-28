@@ -1,0 +1,98 @@
+diff -ur xfce4-dict-0.6.0-orig/configure.in xfce4-dict-0.6.0/configure.in
+--- xfce4-dict-0.6.0-orig/configure.in	2009-12-31 01:04:33.000000000 +0100
++++ xfce4-dict-0.6.0/configure.in	2011-03-01 00:45:31.596764895 +0100
+@@ -37,7 +37,7 @@
+ dnl check for required packages
+ XDT_CHECK_PACKAGE([GTHREAD], [gthread-2.0], [2.6.0])
+ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
+-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.4.0.0])
++XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.8.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4UTIL], [libxfce4util-1.0], [4.4.0.0])
+ XDT_CHECK_PACKAGE([LIBXFCE4PANEL], [libxfce4panel-1.0], [4.4.0.0])
+ XDT_CHECK_PACKAGE([X11], [x11])
+diff -ur xfce4-dict-0.6.0-orig/lib/Makefile.am xfce4-dict-0.6.0/lib/Makefile.am
+--- xfce4-dict-0.6.0-orig/lib/Makefile.am	2009-08-13 19:24:47.000000000 +0200
++++ xfce4-dict-0.6.0/lib/Makefile.am	2011-03-01 00:44:43.444764903 +0100
+@@ -26,14 +26,14 @@
+ 
+ libdict_la_CFLAGS =								\
+ 	-I$(top_srcdir)								\
+-	$(LIBXFCEGUI4_CFLAGS)						\
++	$(LIBXFCE4UI_CFLAGS)						\
+ 	$(LIBXFCE4PANEL_CFLAGS)						\
+ 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"		\
+ 	@GTHREAD_CFLAGS@
+ 
+ libdict_la_LIBADD =								\
+ 	$(LIBXFCE4PANEL_LIBS)						\
+-	$(LIBXFCEGUI4_LIBS)							\
++	$(LIBXFCE4UI_LIBS)							\
+ 	@GTHREAD_LIBS@
+ 
+ 
+diff -ur xfce4-dict-0.6.0-orig/lib/prefs.c xfce4-dict-0.6.0/lib/prefs.c
+--- xfce4-dict-0.6.0-orig/lib/prefs.c	2009-08-24 23:06:02.000000000 +0200
++++ xfce4-dict-0.6.0/lib/prefs.c	2011-03-01 00:44:21.548764903 +0100
+@@ -27,7 +27,7 @@
+ 
+ #include <string.h>
+ #include <gtk/gtk.h>
+-#include <libxfcegui4/libxfcegui4.h>
++#include <libxfce4ui/libxfce4ui.h>
+ 
+ #include "common.h"
+ #include "prefs.h"
+diff -ur xfce4-dict-0.6.0-orig/panel-plugin/Makefile.am xfce4-dict-0.6.0/panel-plugin/Makefile.am
+--- xfce4-dict-0.6.0-orig/panel-plugin/Makefile.am	2009-11-17 20:42:38.000000000 +0100
++++ xfce4-dict-0.6.0/panel-plugin/Makefile.am	2011-03-01 00:44:54.097764898 +0100
+@@ -8,14 +8,14 @@
+ xfce4_dict_plugin_CFLAGS =						\
+ 	-I$(top_srcdir)								\
+ 	-I$(top_srcdir)/lib							\
+-	$(LIBXFCEGUI4_CFLAGS)						\
++	$(LIBXFCE4UI_CFLAGS)						\
+ 	$(LIBXFCE4PANEL_CFLAGS)						\
+ 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"		\
+ 	@GTHREAD_CFLAGS@
+ 
+ xfce4_dict_plugin_LDADD =						\
+ 	$(LIBXFCE4PANEL_LIBS)						\
+-	$(LIBXFCEGUI4_LIBS)							\
++	$(LIBXFCE4UI_LIBS)							\
+ 	@GTHREAD_LIBS@								\
+ 	@X11_LIBS@								\
+ 	$(top_builddir)/lib/libdict.la
+diff -ur xfce4-dict-0.6.0-orig/panel-plugin/xfce4-dict-plugin.c xfce4-dict-0.6.0/panel-plugin/xfce4-dict-plugin.c
+--- xfce4-dict-0.6.0-orig/panel-plugin/xfce4-dict-plugin.c	2009-08-13 19:24:47.000000000 +0200
++++ xfce4-dict-0.6.0/panel-plugin/xfce4-dict-plugin.c	2011-03-01 00:45:57.673764902 +0100
+@@ -24,9 +24,8 @@
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
+ 
+-#include <libxfcegui4/libxfcegui4.h>
+-#include <libxfce4panel/xfce-panel-plugin.h>
+-#include <libxfce4panel/xfce-panel-convenience.h>
++#include <libxfce4ui/libxfce4ui.h>
++#include <libxfce4panel/libxfce4panel.h>
+ 
+ #include <sys/types.h>
+ #include <sys/socket.h>
+diff -ur xfce4-dict-0.6.0-orig/src/Makefile.am xfce4-dict-0.6.0/src/Makefile.am
+--- xfce4-dict-0.6.0-orig/src/Makefile.am	2009-11-17 20:42:38.000000000 +0100
++++ xfce4-dict-0.6.0/src/Makefile.am	2011-03-01 00:45:11.803764898 +0100
+@@ -11,13 +11,14 @@
+ 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"		\
+ 	-I$(top_srcdir)/lib							\
+ 	$(LIBXFCE4UTIL_CFLAGS)						\
++	$(LIBXFCE4UI_CFLAGS)						\
+ 	$(GTK_CFLAGS)								\
+ 	$(PLATFORM_CFLAGS)
+ 
+ xfce4_dict_LDADD =								\
+ 	$(GTK_LIBS)									\
+ 	$(LIBXFCE4UTIL_LIBS)						\
+-	$(LIBXFCEGUI4_LIBS)							\
++	$(LIBXFCE4UI_LIBS)							\
+ 	@GTHREAD_LIBS@								\
+ 	@X11_LIBS@								\
+ 	$(top_builddir)/lib/libdict.la
