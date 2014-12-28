@@ -10,7 +10,7 @@ Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.7/%{name}-%{version}.tar.
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	libxfce4ui-devel >= 4.11.0
