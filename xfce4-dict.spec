@@ -1,23 +1,23 @@
 Summary:	Xfce4 Dictionary
 Summary(pl.UTF-8):	Słownik dla Xfce4
 Name:		xfce4-dict
-Version:	0.7.0
-Release:	2
+Version:	0.7.1
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	ceec37fe56a18c14ecad617e21acce69
+# Source0-md5:	3f541f712be15bff79edd2e9b42a2d1b
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-tools
 BuildRequires:	intltool
 BuildRequires:	libtool
-BuildRequires:	libxfce4ui-devel >= 4.11.0
+BuildRequires:	libxfce4ui-devel >= 4.12.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
-BuildRequires:	xfce4-dev-tools >= 4.11.0
-BuildRequires:	xfce4-panel-devel >= 4.11.0
+BuildRequires:	xfce4-dev-tools >= 4.12.0
+BuildRequires:	xfce4-panel-devel >= 4.12.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
