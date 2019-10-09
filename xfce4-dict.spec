@@ -1,12 +1,12 @@
 Summary:	Xfce4 Dictionary
 Summary(pl.UTF-8):	Słownik dla Xfce4
 Name:		xfce4-dict
-Version:	0.8.2
+Version:	0.8.3
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	6c7b94ec985ecc282d9e83dfa16ceddd
+# Source0-md5:	b81c54826e126c4c63f0e9b89eaee40b
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
 BuildRequires:	autoconf
 BuildRequires:	automake
