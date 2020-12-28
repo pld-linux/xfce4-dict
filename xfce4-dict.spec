@@ -1,12 +1,12 @@
 Summary:	Xfce4 Dictionary
 Summary(pl.UTF-8):	Słownik dla Xfce4
 Name:		xfce4-dict
-Version:	0.8.3
-Release:	2
+Version:	0.8.4
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	b81c54826e126c4c63f0e9b89eaee40b
+# Source0-md5:	e4612e86e5ff6c0619a73ee1c8775fe0
 URL:		http://goodies.xfce.org/projects/applications/xfce4-dict
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,ur_PK}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/xfce4/panel/plugins/libxfce4dict.la
 # unify
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
@@ -87,6 +87,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/xfce4-dict
+%{_iconsdir}/hicolor/*x*/apps/org.xfce.Dictionary.png
 %{_iconsdir}/hicolor/scalable/apps/*.svg
 %{_desktopdir}/xfce4-dict.desktop
 %{_mandir}/man1/xfce4-dict.1*
