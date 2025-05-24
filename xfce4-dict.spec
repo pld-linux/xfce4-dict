@@ -14,9 +14,9 @@ BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	libxfce4ui-devel >= 4.18.0
 BuildRequires:	libxfce4util-devel >= 4.18.0
 BuildRequires:	meson >= 0.54.0
-BuildRequires:	ninja
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	rpmbuild(macros) >= 1.601
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	xfce4-dev-tools >= 4.18.0
 BuildRequires:	xfce4-panel-devel >= 4.18.0
 BuildRequires:	xfce4-panel-devel >= 4.18.0
@@ -55,6 +55,7 @@ Wtyczka dla panelu Xfce dla xfce4-dict.
 
 %build
 %meson
+
 %meson_build
 
 %install
